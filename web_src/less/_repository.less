@@ -1,5 +1,7 @@
 .repository {
-  padding-top: 15px;
+  display: flex;
+  flex-direction: column;
+  min-height: 100%;
 
   .repo-header {
     .ui.compact.menu {
@@ -143,7 +145,7 @@
 
   .header-wrapper {
     background-color: #fafafa;
-    margin-top: -15px;
+    margin-bottom: 20px;
     padding-top: 15px;
 
     .ui.tabs.divider {
@@ -226,7 +228,7 @@
 
     &.divider {
       margin-top: 0;
-      margin-bottom: 20px;
+      margin-bottom: 0;
     }
   }
 
@@ -3062,12 +3064,20 @@ tbody.commit-list {
   vertical-align: middle;
 }
 
+#project-board {
+  display: flex;
+  flex: 1 0 auto;
+}
+
 .board {
   display: flex;
+  flex: 1 0 auto;
   flex-direction: row;
-  flex-wrap: nowrap;
+  width: 100%;
+  overflow: hidden;
   overflow-x: auto;
   margin: 0 .5em;
+  padding-bottom: .5em;
 }
 
 .board-column {
@@ -3075,13 +3085,12 @@ tbody.commit-list {
   border: 1px solid rgba(34, 36, 38, .15) !important;
   margin: 0 .5rem !important;
   padding: .5rem !important;
-  width: 320px;
-  height: 60vh;
-  overflow-y: scroll;
-  flex: 0 0 auto;
-  overflow: visible;
+  min-width: 355px;
+  max-width: 355px;
   display: flex;
+  flex: 1 1 auto;
   flex-direction: column;
+  vertical-align: top;
 }
 
 .board-column-header {
