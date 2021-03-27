@@ -122,6 +122,13 @@
 							<div class="header">
 								<a class="title" href="{{$.RepoLink}}/issues/{{.Index}}">{{.Title}}</a>
 							</div>
+							{{$tasks := .GetTasks}}
+							{{if gt $tasks 0}}
+								{{$tasksDone := .GetTasksDone}}
+								<div class="tasklist">
+									{{svg "octicon-checklist"}} {{$tasksDone}} / {{$tasks}} <span class="progress-bar"><span class="progress" style="width:calc(100% * {{$tasksDone}} / {{$tasks}});"></span></span>
+								</div>
+							{{end}}
 							<div class="text-secondary">
 								#{{.Index}}
 								{{ $timeStr:= TimeSinceUnix .CreatedUnix $.Lang }}
@@ -139,13 +146,13 @@
 									title="{{.Description | RenderEmojiPlain}}">{{.Name | RenderEmoji}}</a>
 								{{ end }}
 							</div>
-							<div class="meta">
-								{{ if .MilestoneID }}
-								<a class="milestone" href="{{$.RepoLink}}/milestone/{{ .MilestoneID}}">
-									{{svg "octicon-milestone"}} {{ .Milestone.Name }}
-								</a>
-								{{ end }}
-							</div>
+							{{ if .MilestoneID }}
+								<div class="meta">
+									<a class="milestone" href="{{$.RepoLink}}/milestone/{{ .MilestoneID}}">
+										{{svg "octicon-milestone"}} {{ .Milestone.Name }}
+									</a>
+								</div>
+							{{ end }}
 							<div class="avatar-stack">
 								<div class="body">
 									{{ range .Assignees }}

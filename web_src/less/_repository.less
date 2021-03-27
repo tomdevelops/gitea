@@ -3150,8 +3150,32 @@ tbody.commit-list {
 
     .header {
       font-size: 1.1em !important;
-      margin-top: -3px !important;
+      margin-top: -2px !important;
       margin-bottom: 4px !important;
+    }
+
+    .tasklist {
+      font-size: .9em;
+      line-height: 1.1em;
+      color: #999999;
+      margin-bottom: 4px !important;
+
+      > .progress-bar {
+        margin-left: 2px;
+        width: 80px;
+        height: 6px;
+        display: inline-block;
+        background-color: #eeeeee;
+        overflow: hidden;
+        border-radius: 3px;
+        vertical-align: 2px !important;
+
+        > .progress {
+          background-color: #cccccc;
+          display: block;
+          height: 100%;
+        }
+      }
     }
 
     .text-secondary {
@@ -3170,6 +3194,8 @@ tbody.commit-list {
     }
 
     .meta > a.milestone {
+      font-size: .9em;
+      line-height: 1.1em;
       color: #999999;
     }
 
