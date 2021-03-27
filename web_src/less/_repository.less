@@ -3184,7 +3184,6 @@ tbody.commit-list {
 
       .body {
         display: flex;
-        background: #0d1117;
         position: absolute;
         right: 0;
         flex-direction: row-reverse;
@@ -3206,19 +3205,22 @@ tbody.commit-list {
             display: flex;
             width: 20px;
             height: 20px;
-            margin-right: 0;
-            margin-left: -11px;
-            box-shadow: 0 0 0 1px #f0f6fc1a;
-            border-radius: 4px !important;
-            border-right: 1px solid #0d1117;
+            margin-left: -10px;
+            border-radius: 3px !important;
             transition: margin .1s ease-in-out;
+            box-shadow: 1.5px 0 2px 0 #00000085;
+          }
+
+          &:first-child > img {
+            box-shadow: none;
           }
         }
 
         &:hover {
           .avatar > img {
             margin-right: 0;
-            margin-left: 3px;
+            margin-left: 5px;
+            box-shadow: none;
           }
         }
       }
