@@ -1,5 +1,28 @@
 const {csrf} = window.config;
 
+function recalcBoardCardCounts() {
+  const boardColumns = document.getElementsByClassName("board-column");
+
+  for (const column of boardColumns) {
+    let count = getCardCount(column);
+
+    // update text with newly calculated count
+    let countElements = column.getElementsByClassName("card-count");
+    if (countElements.length > 0) {
+      countElements[0].innerText = count;
+    }
+  }
+}
+
+function getCardCount(boardColumn) {
+  if (!boardColumn || !boardColumn.nodeType) {
+    return 0;
+  }
+
+  let cards = boardColumn.getElementsByClassName("board-card");
+  return cards.length;
+}
+
 export default async function initProject() {
   if (!window.config || !window.config.PageIsProjects) {
     return;
@@ -15,6 +38,8 @@ export default async function initProject() {
         group: 'shared',
         animation: 150,
         onAdd: (e) => {
+          recalcBoardCardCounts();
+
           $.ajax(`${e.to.dataset.url}/${e.item.dataset.issue}`, {
             headers: {
               'X-Csrf-Token': csrf,
@@ -24,6 +49,7 @@ export default async function initProject() {
             type: 'POST',
             error: () => {
               e.from.insertBefore(e.item, e.from.children[e.oldIndex]);
+              recalcBoardCardCounts();
             },
           });
         },

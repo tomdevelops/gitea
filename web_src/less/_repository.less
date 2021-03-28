@@ -3094,12 +3094,21 @@ tbody.commit-list {
 
 .board-column-header {
   display: flex;
-  justify-content: space-between;
+  justify-content: start;
+  align-items: center;
+}
+
+.card-count {
+  padding-top: .35em !important;
+  min-width: 18px;
+  text-align: center;
 }
 
 .board-label {
   background: none !important;
   line-height: 1.25 !important;
+  padding: .3em !important;
+  flex-grow: 1 !important;
 }
 
 .board-column > .cards {
@@ -3138,6 +3147,16 @@ tbody.commit-list {
   max-width: 333px !important;
   min-height: auto !important;
   cursor: pointer;
+
+  transition: transform .1s ease !important;
+
+  &:hover {
+    box-shadow: 0 1px 3px 0 #d4d4d5, 0 2px 0 0 #2185d0, 0 0 0 1px #d4d4d5 !important;
+  }
+
+  .theme-arc-green &:hover {
+    box-shadow: 0 0 0 1px #4c505c, 0 2px 0 0 #75bb30, 0 1px 3px 0 #4c505c !important;
+  }
 
   .icon {
     position: absolute;
@@ -3202,8 +3221,16 @@ tbody.commit-list {
     .meta > a.milestone {
       font-size: .9em;
       line-height: 1.1em;
-      color: #999999;
+      color: #999999 !important;
+
+      &:hover {
+        color: #000000 !important;
+      }
     }
+  }
+
+  .theme-arc-green & > .content > .tasklist > .progress-bar > .progress {
+    background-color: #929292;
   }
 
   .avatar-stack {
