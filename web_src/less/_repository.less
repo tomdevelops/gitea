@@ -3053,6 +3053,11 @@ tbody.commit-list {
     border: none !important;
     padding: 0 !important;
 
+    > div:last-child {
+      padding-bottom: 0 !important;
+      margin-bottom: 0 !important;
+    }
+
     .header {
       font-size: 1.1em !important;
       margin-top: -2px !important;
@@ -3103,56 +3108,56 @@ tbody.commit-list {
       line-height: 1.1em;
       color: #999999;
     }
+  }
 
-    .avatar-stack {
+  .avatar-stack {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    height: 20px;
+    min-width: 46px;
+    margin-bottom: 8px;
+    margin-right: 8px;
+
+    .body {
+      display: flex;
       position: absolute;
-      bottom: 0;
       right: 0;
-      height: 20px;
-      min-width: 46px;
-      margin-bottom: 8px;
-      margin-right: 8px;
+      flex-direction: row-reverse;
 
-      .body {
-        display: flex;
-        position: absolute;
-        right: 0;
-        flex-direction: row-reverse;
+      .avatar {
+        display: inline-block;
+        padding: 0;
+        text-decoration: none;
+        white-space: nowrap;
+        cursor: pointer;
+        user-select: none;
+        background-color: initial;
+        border: 0;
+        appearance: none;
+        border-radius: 0;
 
-        .avatar {
-          display: inline-block;
-          padding: 0;
-          text-decoration: none;
-          white-space: nowrap;
-          cursor: pointer;
-          user-select: none;
-          background-color: initial;
-          border: 0;
-          appearance: none;
-          border-radius: 0;
-
-          > img {
-            z-index: 2;
-            display: flex;
-            width: 20px;
-            height: 20px;
-            margin-left: -10px;
-            border-radius: 3px !important;
-            transition: margin .1s ease-in-out;
-            box-shadow: 1.5px 0 2px 0 #00000085;
-          }
-
-          &:first-child > img {
-            box-shadow: none;
-          }
+        > img {
+          z-index: 2;
+          display: flex;
+          width: 20px;
+          height: 20px;
+          margin-left: -10px;
+          border-radius: 3px !important;
+          transition: margin .1s ease-in-out;
+          box-shadow: 1.5px 0 2px 0 #00000085;
         }
 
-        &:hover {
-          .avatar > img {
-            margin-right: 0;
-            margin-left: 5px;
-            box-shadow: none;
-          }
+        &:first-child > img {
+          box-shadow: none;
+        }
+      }
+
+      &:hover {
+        .avatar > img {
+          margin-right: 0;
+          margin-left: 5px;
+          box-shadow: none;
         }
       }
     }

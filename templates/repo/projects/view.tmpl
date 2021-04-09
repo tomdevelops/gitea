@@ -186,11 +186,13 @@
 									{{$.i18n.Tr .GetLastEventLabelFake $timeStr (.Poster.GetDisplayName|Escape) | Safe}}
 								{{end}}
 							</div>
+							{{- if .Labels}}
 							<div class="labels">
 								{{ range .Labels }}
 								<a class="ui label" href="{{$.RepoLink}}/issues?labels={{.ID}}" style="color: {{.ForegroundColor}}; background-color: {{.Color}}; margin-bottom: 3px;" title="{{.Description | RenderEmojiPlain}}">{{.Name | RenderEmoji}}</a>
 								{{ end }}
 							</div>
+							{{- end }}
 							{{- if .MilestoneID }}
 								<div class="meta">
 									<a class="milestone" href="{{$.RepoLink}}/milestone/{{ .MilestoneID}}">
@@ -198,25 +200,25 @@
 									</a>
 								</div>
 							{{- end }}
-							<div class="avatar-stack">
-								<div class="body">
-									{{ range .Assignees }}
-									<div class="avatar poping up" title data-content="{{ .LowerName}}">
-										<img src="{{ .AvatarLink}}" alt="{{ .LowerName}}" />
-									</div>
-									{{ end }}
+						</div>
+						<div class="avatar-stack">
+							<div class="body">
+								{{ range .Assignees }}
+								<div class="avatar poping up" title data-content="{{ .LowerName}}">
+									<img src="{{ .AvatarLink}}" alt="{{ .LowerName}}" />
 								</div>
+								{{ end }}
 							</div>
-							<div class="extra content">
-								{{- range index $.LinkedPRs .ID }}
-								<div class="meta">
-									<a href="{{$.RepoLink}}/pulls/{{ .Index }}">
-										<span class="{{if .PullRequest.HasMerged}}purple{{else if .IsClosed}}red{{else}}green{{end}}">{{svg "octicon-git-merge"}}</span>
-										{{ .Title}} (#{{ .Index }})
-									</a>
-								</div>
-								{{- end }}
+						</div>
+						<div class="extra content">
+							{{- range index $.LinkedPRs .ID }}
+							<div class="meta">
+								<a href="{{$.RepoLink}}/pulls/{{ .Index }}">
+									<span class="{{if .PullRequest.HasMerged}}purple{{else if .IsClosed}}red{{else}}green{{end}}">{{svg "octicon-git-merge"}}</span>
+									{{ .Title}} (#{{ .Index }})
+								</a>
 							</div>
+							{{- end }}
 						</div>
 					</div>
 					<!-- stop issue card -->
