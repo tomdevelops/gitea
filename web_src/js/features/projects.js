@@ -38,7 +38,7 @@ export default async function initProject() {
 
   for (const column of boardColumns) {
     new Sortable(
-      column.getElementsByClassName('board')[0],
+      column.getElementsByClassName('cards')[0],
       {
         group: 'shared',
         animation: 150,
